@@ -1,1 +1,1 @@
-export const API_URL = "https://backend.jmb-inventory-system.com/api/v1/";
+export const API_URL = "https://api.luxhouse.uz";
