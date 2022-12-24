@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { adminDelete } from '../../redux/admin_add';
-import { DeleteYoutube, PutYoutube } from '../../redux/youtube';
+import { DeleteYoutube, GetYoutube, PutYoutube } from '../../redux/youtube';
 import Delete from './delete';
 import AdminAddForm from './post';
 import Put from './put';
@@ -24,8 +24,10 @@ function YoutubeComponent({open , handleClose}) {
    setAdminId(e.target.id)
    setOpenPut(true)
   }
-  const HandleDelete = () =>{
-    dispatch(DeleteYoutube(adminId))
+  const HandleDelete =  async() =>{
+    await dispatch(DeleteYoutube(adminId))
+    dispatch(GetYoutube())
+    handleCloseDelete()
   }
 
   return (

@@ -3,24 +3,21 @@ import CommonBtn from '../../common/CommonBtn'
 import ModalCommon from '../../common/Modal/Modal'
 import { useDispatch } from 'react-redux';
 import { Wrapper } from './styled-index';
-import { useSelector } from 'react-redux';
-import { GetYoutube, PostYoutube } from '../../../redux/youtube';
+import { GetClient, PostClient } from '../../../redux/client_comment';
 function AdminAddForm({Open , HandleClose}) {
     const dispatch = useDispatch();
     const titleUzUsref = useRef();
     const titleRuUsref = useRef();
     const titleEnUsref = useRef();
-
     const videoUrlUsref = useRef();
-    const addAdmin = useSelector(state => state.youtube)
     const HandleSubmit = async (e) =>{
         e.preventDefault();
-        const tube_title_uz = titleUzUsref.current.value
-        const tube_title_ru = titleRuUsref.current.value
-        const tube_title_en = titleEnUsref.current.value
-        const tube_video = videoUrlUsref.current.value
-        await dispatch(PostYoutube({tube_title_uz , tube_title_ru , tube_title_en , tube_video}))
-        dispatch(GetYoutube())
+        const client_text_uz = titleUzUsref.current.value
+        const client_text_ru = titleRuUsref.current.value
+        const client_text_en = titleEnUsref.current.value
+        const client_video = videoUrlUsref.current.value
+        await dispatch(PostClient({client_text_uz , client_text_ru , client_text_en , client_video}))
+        dispatch(GetClient())
         HandleClose()
       }
  
