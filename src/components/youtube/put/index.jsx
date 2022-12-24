@@ -4,6 +4,31 @@ import { GetYoutube, PutYoutube } from "../../../redux/youtube";
 import ModalCommon from "../../common/Modal/Modal";
 import { Wrapper } from "./styled-index";
 
+
+function Put({openPut , handleClosePut , HandlePut }) {
+    const dispatch = useDispatch();
+    const data = useSelector(state => state.youtube)
+    const titleUz = useRef();
+    const titleRu = useRef();
+    const titleEn = useRef();
+    const titleVideo = useRef();
+    const HandleSubmit =  async(e) =>{
+        e.preventDefault();
+        const body = {
+            tube_title_uz : titleUz.current.value,
+            tube_title_ru : titleRu.current.value,
+            tube_title_en : titleEn.current.value,
+            tube_video : titleVideo.current.value,
+        }
+        await dispatch(PutYoutube({ body  , id:HandlePut}))
+        dispatch(GetYoutube())
+        handleClosePut()
+      }
+    return(
+        <>
+    <ModalCommon  width={340} open={openPut} handleClose={handleClosePut}>
+          <Wrapper>
+
 function Put({ openPut, handleClosePut, HandlePut }) {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.youtube);
@@ -26,6 +51,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
     <>
       <ModalCommon width={340} open={openPut} handleClose={handleClosePut}>
         <Wrapper>
+
           <h3>изменить</h3>
           <form onSubmit={HandleSubmit}>
             {data.getYoutube?.Data.map((elem) =>

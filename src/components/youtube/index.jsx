@@ -1,3 +1,13 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { adminDelete } from '../../redux/admin_add';
+import { DeleteYoutube, GetYoutube, PutYoutube } from '../../redux/youtube';
+import Delete from './delete';
+import AdminAddForm from './post';
+import Put from './put';
+import TableAdd from './table';
+function YoutubeComponent({open , handleClose}) {
+
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { adminDelete } from "../../redux/admin_add";
@@ -7,6 +17,7 @@ import AdminAddForm from "./post";
 import Put from "./put";
 import TableAdd from "./table";
 function YoutubeComponent({ open, handleClose }) {
+
   const dispatch = useDispatch();
   const [adminId, setAdminId] = useState();
   const [openDelete, setOpenDelete] = useState(false);
@@ -20,12 +31,23 @@ function YoutubeComponent({ open, handleClose }) {
   const [openPut, setOpenPut] = useState(false);
   const handleClosePut = () => setOpenPut(false);
   const handlePutModal = (e) => {
+
+   setAdminId(e.target.id)
+   setOpenPut(true)
+  }
+  const HandleDelete =  async() =>{
+    await dispatch(DeleteYoutube(adminId))
+    dispatch(GetYoutube())
+    handleCloseDelete()
+  }
+
     setAdminId(e.target.id);
     setOpenPut(true);
   };
   const HandleDelete = () => {
     dispatch(DeleteYoutube(adminId));
   };
+
 
   return (
     <>
