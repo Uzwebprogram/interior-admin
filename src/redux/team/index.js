@@ -117,7 +117,7 @@ const TeamSlice = createSlice({
             state.putTeam.Loading = false
         },
         [UploadImage.pending]:(state , action) =>{
-            state.uploadTeam.loading = true
+            state.uploadTeam.Loading = true
         },
         [UploadImage.fulfilled]:(state , action) =>{
             state.uploadTeam.Error = false

@@ -4,12 +4,14 @@ import AdminSlice from "./admin_add/index"
 import YoutubeSlice from "./youtube/index"
 import ClientSlice from "./client_comment/index"
 import TeamSlice from "./team/index"
+import ProjectsSlice from "./projects/index"
 export const store = configureStore({
     reducer:{
         admin : authSlice,
         adminadd : AdminSlice,
         youtube : YoutubeSlice,
         client_comment : ClientSlice,
-        team : TeamSlice
+        team : TeamSlice,
+        projects : ProjectsSlice
     }
 })
