@@ -55,6 +55,14 @@ function Header({hover1}) {
                     </NavLink>
                 </li>
                 <li>
+                    <NavLink to={'/portfolioyoutube'}>
+                        <span class="icon">
+                            <ion-icon name="paper-plane-outline"></ion-icon>
+                        </span>
+                        <span class="title">You tube информация</span>
+                    </NavLink>
+                </li>
+                <li>
                     <NavLink to={'/calculateproject'}>
                         <span class="icon">
                             <ion-icon name="people-circle-outline"></ion-icon>
