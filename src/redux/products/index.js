@@ -8,7 +8,10 @@ export const GetProducts = createAsyncThunk("Products/get", async () => {
     .then((response) => response.data);
 });
 export const PostProducts = createAsyncThunk("Products/post", async (body) => {
-  return await axios.post(`${API_URL}/products`, body).then((res) => res);
+  return await axios.post(`${API_URL}/products`, body).then((res) =>{
+    console.log(res);
+    return res
+  } );
 });
 export const UploadImage = createAsyncThunk("Products/upload", async (e) => {
   const formData = new FormData();
