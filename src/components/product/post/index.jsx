@@ -17,8 +17,6 @@ function AdminAddForm({ Open, HandleClose }) {
   const metrRef = useRef()
   const stillRef = useRef()
   const designRef = useRef()
-  const rowsRef = useRef()
-  const colsRef = useRef()
   const product_titleUz = useRef();
   const product_titleRu = useRef();
   const product_titleEn = useRef();
@@ -32,7 +30,7 @@ function AdminAddForm({ Open, HandleClose }) {
   const [roww, setRoww]= useState("")
   const [interior, setInterior]= useState("")
   const [coll, setColl]= useState("")
-  console.log(roww , coll);
+
   const HandleRow = (e) => {
     setRoww(e.target.value)
   }
@@ -105,7 +103,7 @@ function AdminAddForm({ Open, HandleClose }) {
     <ModalCommon open={Open} handleClose={HandleClose}>
       <>
         <Wrapper onSubmit={HandleSubmit}>
-          <h3>До после добавить</h3>
+          <h3>коммерческие и жилые добавить</h3>
           {dataProduct.Loading == true ? (
             <span className="loading">loading...</span>
           ) : (
@@ -115,7 +113,7 @@ function AdminAddForm({ Open, HandleClose }) {
                 <span className="span-download">
                   <ion-icon name="cloud-download-outline"></ion-icon>
                 </span>
-                загрузить до
+                загрузить 1
               </label>
             </>
           )}
@@ -129,7 +127,7 @@ function AdminAddForm({ Open, HandleClose }) {
                 <span className="span-download">
                   <ion-icon name="cloud-download-outline"></ion-icon>
                 </span>
-                загрузить после
+                загрузить 2
               </label>
             </>
           )}
@@ -143,7 +141,7 @@ function AdminAddForm({ Open, HandleClose }) {
                 <span className="span-download">
                   <ion-icon name="cloud-download-outline"></ion-icon>
                 </span>
-                загрузить после
+                загрузить 3
               </label>
             </>
           )}
@@ -157,7 +155,7 @@ function AdminAddForm({ Open, HandleClose }) {
                 <span className="span-download">
                   <ion-icon name="cloud-download-outline"></ion-icon>
                 </span>
-                загрузить после
+                загрузить 4
               </label>
             </>
           )}
@@ -240,25 +238,25 @@ function AdminAddForm({ Open, HandleClose }) {
           />
            <input
             type="text"
-            placeholder="описание ен"
+            placeholder="место расположения"
             required
             ref={locationRef}
           />
            <input
             type="text"
-            placeholder="описание ен"
+            placeholder="метр"
             required
             ref={metrRef}
           />
            <input
             type="text"
-            placeholder="описание ен"
+            placeholder="стилл"
             required
             ref={stillRef}
           />
            <input
             type="text"
-            placeholder="описание ен"
+            placeholder="дизайн"
             required
             ref={designRef}
           />

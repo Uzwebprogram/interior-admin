@@ -14,7 +14,7 @@ function Category() {
   const handleOpen = () => setOpen(true)
   return (
     <CategoryContainer>
-      <HeaderTopCommon title={"До после"} onClick={handleOpen} textBtn={"До после добавить"}/>
+      <HeaderTopCommon title={"коммерческие и жилые"} onClick={handleOpen} textBtn={"коммерческие и жилые добавить"}/>
       <ProductComponent handleClose={handleClose} open={open}/>
     </CategoryContainer>
   )

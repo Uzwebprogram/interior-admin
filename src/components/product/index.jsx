@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { DeleteSingle, GetSingle } from "../../redux/before_after/index";
+import { GetProducts, DeleteProducts } from "../../redux/products";
 import Delete from "./delete";
 import AdminAddForm from "./post";
 import Put from "./put";
@@ -22,8 +22,8 @@ function ProductComponent({ open, handleClose }) {
     setOpenPut(true);
   };
   const HandleDelete = async () => {
-    await dispatch(DeleteSingle(adminId));
-    dispatch(GetSingle());
+    await dispatch(DeleteProducts(adminId));
+    dispatch(GetProducts());
     handleCloseDelete();
   };
 

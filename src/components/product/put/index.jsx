@@ -1,45 +1,83 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import CommonBtn from "../../common/CommonBtn";
 import {
-  GetSingle,
-  PutSingle,
+  GetProducts,
+  PostProducts,
   UploadImage,
   UploadImage2,
-} from "../../../redux/before_after/index";
+  UploadImage3,
+  UploadImage4,
+} from "../../../redux/products/index";
 import ModalCommon from "../../common/Modal/Modal";
 import { Wrapper } from "./styled-index";
 
 function Put({ openPut, handleClosePut, HandlePut }) {
+  const data = useSelector((state) => state.product);
   const dispatch = useDispatch();
-  const single_titleUz = useRef();
-  const single_titleRu = useRef();
-  const single_titleEn = useRef();
-  const single_descriptionUz = useRef();
-  const single_descriptionRu = useRef();
-  const single_descriptionEn = useRef();
-  const data = useSelector((state) => state.single);
-  const dataSingle = useSelector((state) => state.single.uploadSingle);
-  const dataSingle2 = useSelector((state) => state.single.uploadSingle2);
+  const locationRef = useRef();
+  const metrRef = useRef();
+  const stillRef = useRef();
+  const designRef = useRef();
+  const product_titleUz = useRef();
+  const product_titleRu = useRef();
+  const product_titleEn = useRef();
+  const product_descriptionUz = useRef();
+  const product_descriptionRu = useRef();
+  const product_descriptionEn = useRef();
+  const dataProduct = useSelector((state) => state.product.uploadProducts);
+  const dataProduct2 = useSelector((state) => state.product.uploadProducts2);
+  const dataProduct3 = useSelector((state) => state.product.uploadProducts3);
+  const dataProduct4 = useSelector((state) => state.product.uploadProducts4);
+  const [roww, setRoww] = useState("");
+  const [interior, setInterior] = useState("");
+  const [coll, setColl] = useState("");
+
+  const HandleRow = (e) => {
+    setRoww(e.target.value);
+  };
+  const HandleInterior = (e) => {
+    setInterior(e.target.value);
+  };
+  const HandleCol = (e) => {
+    setColl(e.target.value);
+  };
+
   const HandleChange = async (e) => {
     await dispatch(UploadImage(e));
   };
   const HandleChange2 = async (e) => {
     await dispatch(UploadImage2(e));
   };
+  const HandleChange3 = async (e) => {
+    await dispatch(UploadImage3(e));
+  };
+  const HandleChange4 = async (e) => {
+    await dispatch(UploadImage4(e));
+  };
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const body = {
-      single_img1: dataSingle.data,
-      single_img2: dataSingle2.data,
-      single_title_uz: single_titleUz.current.value,
-      single_title_ru: single_titleRu.current.value,
-      single_title_en: single_titleEn.current.value,
-      single_description_uz: single_descriptionUz.current.value,
-      single_description_ru: single_descriptionRu.current.value,
-      single_description_en: single_descriptionEn.current.value,
+      product_img1: dataProduct.data,
+      category_id: interior,
+      product_img2: dataProduct2.data,
+      product_img3: dataProduct3.data,
+      product_img4: dataProduct4.data,
+      product_title_uz: product_titleUz.current.value,
+      product_title_ru: product_titleRu.current.value,
+      product_title_en: product_titleEn.current.value,
+      product_description_uz: product_descriptionUz.current.value,
+      product_description_ru: product_descriptionRu.current.value,
+      product_description_en: product_descriptionEn.current.value,
+      location: locationRef.current.value,
+      metr: metrRef.current.value,
+      still: stillRef.current.value,
+      design: designRef.current.value,
+      cols: coll,
+      rows: roww,
     };
-    await dispatch(PutSingle({ body, id: HandlePut }));
-    dispatch(GetSingle());
+    await dispatch(PostProducts({ body, id: HandlePut }));
+    dispatch(GetProducts());
     handleClosePut();
   };
   return (
@@ -48,10 +86,10 @@ function Put({ openPut, handleClosePut, HandlePut }) {
         <Wrapper>
           <h3>изменить</h3>
           <form onSubmit={HandleSubmit}>
-            {data.getSingle?.Data.map((elem) =>
-              elem.single_id == HandlePut ? (
+            {data.getProducts?.Data.map((elem) =>
+              elem.product_id == HandlePut ? (
                 <>
-                  {dataSingle.Loading == true ? (
+                  {dataProduct.Loading == true ? (
                     <span className="loading">loading...</span>
                   ) : (
                     <>
@@ -60,11 +98,12 @@ function Put({ openPut, handleClosePut, HandlePut }) {
                         <span className="span-download">
                           <ion-icon name="cloud-download-outline"></ion-icon>
                         </span>
-                        загрузить до
+                        загрузить 1
                       </label>
                     </>
                   )}
-                  {dataSingle2.Loading == true ? (
+                  <br />
+                  {dataProduct2.Loading == true ? (
                     <span className="loading">loading...</span>
                   ) : (
                     <>
@@ -73,43 +112,148 @@ function Put({ openPut, handleClosePut, HandlePut }) {
                         <span className="span-download">
                           <ion-icon name="cloud-download-outline"></ion-icon>
                         </span>
-                        загрузить после
+                        загрузить 2
                       </label>
                     </>
                   )}
+                  <br />
+                  {dataProduct3.Loading == true ? (
+                    <span className="loading">loading...</span>
+                  ) : (
+                    <>
+                      <input type="file" id="file3" onChange={HandleChange3} />
+                      <label for="file3" class="custom-file-upload">
+                        <span className="span-download">
+                          <ion-icon name="cloud-download-outline"></ion-icon>
+                        </span>
+                        загрузить 3
+                      </label>
+                    </>
+                  )}
+                  <br />
+                  {dataProduct4.Loading == true ? (
+                    <span className="loading">loading...</span>
+                  ) : (
+                    <>
+                      <input type="file" id="file4" onChange={HandleChange4} />
+                      <label for="file4" class="custom-file-upload">
+                        <span className="span-download">
+                          <ion-icon name="cloud-download-outline"></ion-icon>
+                        </span>
+                        загрузить 4
+                      </label>
+                    </>
+                  )}
+                  <br />
+                  <select onChange={HandleInterior}>
+                    <option value="default" selected disabled>
+                      Выбор типа
+                    </option>
+                    <option value="1">коммерческие</option>
+                    <option value="2">жилые</option>
+                  </select>
+                  <br />
+                  <br />
+                  <br />
+                  <select onChange={HandleRow}>
+                    <option value="rows" selected disabled>
+                      Rows
+                    </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <br />
+                  <select onChange={HandleCol}>
+                    <option value="rows" selected disabled>
+                      Cols
+                    </option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <br />
                   <input
                     type="text"
-                    placeholder={elem.single_title_uz}
-                    ref={single_titleUz}
+                    placeholder={elem.product_title_uz}
+                    required
+                    ref={product_titleUz}
                   />
                   <input
                     type="text"
-                    placeholder={elem.single_title_ru}
-                    ref={single_titleRu}
+                    placeholder={elem.product_title_ru}
+                    required
+                    ref={product_titleRu}
                   />
                   <input
                     type="text"
-                    placeholder={elem.single_title_en}
-                    ref={single_titleEn}
+                    placeholder={elem.product_title_en}
+                    required
+                    ref={product_titleEn}
                   />
                   <input
                     type="text"
-                    placeholder={elem.single_description_uz}
-                    ref={single_descriptionUz}
+                    placeholder={elem.product_description_uz}
+                    required
+                    ref={product_descriptionUz}
                   />
                   <input
                     type="text"
-                    placeholder={elem.single_description_ru}
-                    ref={single_descriptionRu}
+                    placeholder={elem.product_description_ru}
+                    required
+                    ref={product_descriptionRu}
                   />
                   <input
                     type="text"
-                    placeholder={elem.single_description_en}
-                    ref={single_descriptionEn}
+                    placeholder="описание ен"
+                    required
+                    ref={product_descriptionEn}
                   />
-                  <button type="submit" value={elem.single_id}>
+                  <input
+                    type="text"
+                    placeholder="описание ен"
+                    required
+                    ref={locationRef}
+                  />
+                  <input
+                    type="text"
+                    placeholder="описание ен"
+                    required
+                    ref={metrRef}
+                  />
+                  <input
+                    type="text"
+                    placeholder="описание ен"
+                    required
+                    ref={stillRef}
+                  />
+                  <input
+                    type="text"
+                    placeholder="описание ен"
+                    required
+                    ref={designRef}
+                  />
+                  <CommonBtn type={"submit"} value={elem.product_id} style={{ marginTop: "20px" }}>
                     изменить
-                  </button>
+                  </CommonBtn>
                 </>
               ) : null
             )}

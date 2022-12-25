@@ -26,6 +26,10 @@ export const Wrapper = styled.div`
 form{
     display: flex;
     flex-direction: column;
+
+    select{
+        width: 100%;
+    }
 }
 label{
     border-style: dotted;
