@@ -1,55 +1,100 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import CommonBtn from "../../common/CommonBtn";
 import ModalCommon from "../../common/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { Wrapper } from "./styled-index";
 import {
-  GetSingle,
-  PostSingle,
+  GetProducts,
+  PostProducts,
   UploadImage,
   UploadImage2,
-} from "../../../redux/before_after/index";
+  UploadImage3,
+  UploadImage4
+} from "../../../redux/products/index";
 function AdminAddForm({ Open, HandleClose }) {
   const dispatch = useDispatch();
-  const single_titleUz = useRef();
-  const single_titleRu = useRef();
-  const single_titleEn = useRef();
-  const single_descriptionUz = useRef();
-  const single_descriptionRu = useRef();
-  const single_descriptionEn = useRef();
-  const dataSingle = useSelector((state) => state.single.uploadSingle);
-  const dataSingle2 = useSelector((state) => state.single.uploadSingle2);
-  console.log(dataSingle);
-  console.log(dataSingle2);
+  const locationRef = useRef()
+  const metrRef = useRef()
+  const stillRef = useRef()
+  const designRef = useRef()
+  const rowsRef = useRef()
+  const colsRef = useRef()
+  const product_titleUz = useRef();
+  const product_titleRu = useRef();
+  const product_titleEn = useRef();
+  const product_descriptionUz = useRef();
+  const product_descriptionRu = useRef();
+  const product_descriptionEn = useRef();
+  const dataProduct = useSelector((state) => state.product.uploadProducts);
+  const dataProduct2 = useSelector((state) => state.product.uploadProducts2);
+  const dataProduct3 = useSelector((state) => state.product.uploadProducts3);
+  const dataProduct4 = useSelector((state) => state.product.uploadProducts4);
+
+  console.log(dataProduct);
+
+  const [roww, setRoww]= useState()
+  const [coll, setColl]= useState()
+
+  const HandleRow = (e) => {
+    setRoww(e.target.value)
+  }
+  const HandleCol = (e) => {
+    setColl(e.target.value)
+  }
+ 
   const HandleChange = async (e) => {
     await dispatch(UploadImage(e));
   };
   const HandleChange2 = async (e) => {
     await dispatch(UploadImage2(e));
   };
+  const HandleChange3 = async (e) => {
+    await dispatch(UploadImage3(e));
+  };
+  const HandleChange4 = async (e) => {
+    await dispatch(UploadImage4(e));
+  };
+
   const HandleSubmit = async (e) => {
     e.preventDefault();
-    const single_title_uz = single_titleUz.current.value;
-    const single_title_ru = single_titleRu.current.value;
-    const single_title_en = single_titleEn.current.value;
-    const single_description_uz = single_descriptionUz.current.value;
-    const single_description_ru = single_descriptionRu.current.value;
-    const single_description_en = single_descriptionEn.current.value;
-    const single_img1 = dataSingle.data;
-    const single_img2 = dataSingle2.data;
+    const product_img1 = dataProduct.data;
+    const product_img2 = dataProduct2.data;
+    const product_img3 = dataProduct3.data;
+    const product_img4 = dataProduct4.data;
+    const product_title_uz = product_titleUz.current.value;
+    const product_title_ru = product_titleRu.current.value;
+    const product_title_en = product_titleEn.current.value;
+    const product_description_uz = product_descriptionUz.current.value;
+    const product_description_ru = product_descriptionRu.current.value;
+    const product_description_en = product_descriptionEn.current.value;
+    const location = locationRef.current.value;
+    const metr = metrRef.current.value;
+    const still = stillRef.current.value;
+    const design = designRef.current.value;
+    const cols = coll;
+    const rows = roww;
+   
     await dispatch(
-      PostSingle({
-        single_img1,
-        single_img2,
-        single_title_uz,
-        single_title_ru,
-        single_title_en,
-        single_description_uz,
-        single_description_ru,
-        single_description_en,
+      PostProducts({
+        product_img1,
+        product_img2,
+        product_img3,
+        product_img4,
+        product_title_uz,
+        product_title_ru,
+        product_title_en,
+        product_description_uz,
+        product_description_ru,
+        product_description_en,
+        location,
+        metr,
+        still,
+        design,
+        cols,
+        rows
       })
     );
-    dispatch(GetSingle());
+    dispatch(GetProducts());
     HandleClose();
   };
 
@@ -58,7 +103,7 @@ function AdminAddForm({ Open, HandleClose }) {
       <>
         <Wrapper onSubmit={HandleSubmit}>
           <h3>До после добавить</h3>
-          {dataSingle.Loading == true ? (
+          {dataProduct.Loading == true ? (
             <span className="loading">loading...</span>
           ) : (
             <>
@@ -72,7 +117,7 @@ function AdminAddForm({ Open, HandleClose }) {
             </>
           )}
           <br />
-          {dataSingle2.Loading == true ? (
+          {dataProduct2.Loading == true ? (
             <span className="loading">loading...</span>
           ) : (
             <>
@@ -85,41 +130,134 @@ function AdminAddForm({ Open, HandleClose }) {
               </label>
             </>
           )}
+          <br />
+           {dataProduct3.Loading == true ? (
+            <span className="loading">loading...</span>
+          ) : (
+            <>
+              <input type="file" id="file2" onChange={HandleChange3} />
+              <label for="file2" class="custom-file-upload">
+                <span className="span-download">
+                  <ion-icon name="cloud-download-outline"></ion-icon>
+                </span>
+                загрузить после
+              </label>
+            </>
+          )}
+          <br />
+           {dataProduct4.Loading == true ? (
+            <span className="loading">loading...</span>
+          ) : (
+            <>
+              <input type="file" id="file2" onChange={HandleChange4} />
+              <label for="file2" class="custom-file-upload">
+                <span className="span-download">
+                  <ion-icon name="cloud-download-outline"></ion-icon>
+                </span>
+                загрузить после
+              </label>
+            </>
+          )}
+          <br />
+          <select>
+            <option value="default" selected disabled>Выбор типа</option>
+            <option value="1">коммерческие</option>
+            <option value="2">жилые</option>
+          </select>
+          <br />
+          <br />
+          <br />
+          <select onChange={HandleRow}>
+            <option value="rows" selected disabled>Rows</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <br />
+          <select onChange={HandleCol}>
+            <option value="rows" selected disabled>Cols</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <br />
           <input
             type="text"
             placeholder="имя уз"
             required
-            ref={single_titleUz}
+            ref={product_titleUz}
           />
           <input
             type="text"
             placeholder="имя ру"
             required
-            ref={single_titleRu}
+            ref={product_titleRu}
           />
           <input
             type="text"
             placeholder="имя ен"
             required
-            ref={single_titleEn}
+            ref={product_titleEn}
           />
           <input
             type="text"
             placeholder="описание уз"
             required
-            ref={single_descriptionUz}
+            ref={product_descriptionUz}
           />
           <input
             type="text"
             placeholder="описание ру"
             required
-            ref={single_descriptionRu}
+            ref={product_descriptionRu}
           />
           <input
             type="text"
             placeholder="описание ен"
             required
-            ref={single_descriptionEn}
+            ref={product_descriptionEn}
+          />
+           <input
+            type="text"
+            placeholder="описание ен"
+            required
+            ref={locationRef}
+          />
+           <input
+            type="text"
+            placeholder="описание ен"
+            required
+            ref={metrRef}
+          />
+           <input
+            type="text"
+            placeholder="описание ен"
+            required
+            ref={stillRef}
+          />
+           <input
+            type="text"
+            placeholder="описание ен"
+            required
+            ref={designRef}
           />
           <CommonBtn type={"submit"} style={{ marginTop: "20px" }}>
             Добавить

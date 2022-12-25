@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import HeaderTopCommon from '../../components/common/HeaderTop'
-import { WrapperContainer } from '../../style-App'
+import { CategoryContainer } from './styled-index'
 import { useDispatch } from 'react-redux';
 import ProductComponent from '../../components/product';
 import { GetProducts } from '../../redux/products';
@@ -13,10 +13,10 @@ function Category() {
   const handleClose = () => setOpen(false)
   const handleOpen = () => setOpen(true)
   return (
-    <WrapperContainer>
+    <CategoryContainer>
       <HeaderTopCommon title={"До после"} onClick={handleOpen} textBtn={"До после добавить"}/>
       <ProductComponent handleClose={handleClose} open={open}/>
-    </WrapperContainer>
+    </CategoryContainer>
   )
 }
 export default Category
