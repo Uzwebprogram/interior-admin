@@ -17,10 +17,8 @@ export const store = configureStore({
         youtube : YoutubeSlice,
         client_comment : ClientSlice,
         team : TeamSlice,
-
         vacancy: VacancySlice,
-        partner: PartnerSlice
-
+        partner: PartnerSlice,
         projects : ProjectsSlice
 
     }
