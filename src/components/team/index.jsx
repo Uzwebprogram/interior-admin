@@ -1,10 +1,7 @@
 
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { adminDelete } from '../../redux/admin_add';
-import { DeleteClient, GetClient } from '../../redux/client_comment';
 import { DeleteTeam, GetTeam } from '../../redux/team';
-import { DeleteYoutube, GetYoutube, PutYoutube } from '../../redux/youtube';
 import Delete from './delete';
 import AdminAddForm from './post';
 import Put from './put';

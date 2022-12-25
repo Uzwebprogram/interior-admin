@@ -15,6 +15,8 @@ function ModalCommon({ open, handleClose, children , width }){
     border: "2px solid #000",
     boxShadow: "0px 0px 10px 10px #ff800b",
     borderRadius : "10px",
+    overflowY: 'auto',
+    height: '350px',
     p: 2,
   };
   return (
