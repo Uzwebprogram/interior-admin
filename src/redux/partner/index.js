@@ -63,7 +63,7 @@ const PartnerSlice = createSlice({
     },
     extraReducers :{
         [GetPartner.pending]:(state , action) =>{
-            state.getPartner.loading = true
+            state.getPartner.Loading = true
         },
         [GetPartner.fulfilled]:(state , action) =>{
             state.getPartner.Error = false
@@ -78,7 +78,7 @@ const PartnerSlice = createSlice({
             state.getPartner.Data = []
         },
         [PostPartner.pending]:(state , action) =>{
-            state.postPartner.loading = true
+            state.postPartner.Loading = true
         },
         [PostPartner.fulfilled]:(state , action) =>{
             state.postPartner.Error = false
@@ -91,7 +91,7 @@ const PartnerSlice = createSlice({
             state.postPartner.Loading = false
         },
         [DeletePartner.pending]:(state , action) =>{
-            state.deletePartner.loading = true
+            state.deletePartner.Loading = true
         },
         [DeletePartner.fulfilled]:(state , action) =>{
             state.deletePartner.Error = false
@@ -104,7 +104,7 @@ const PartnerSlice = createSlice({
             state.deletePartner.Loading = false
         },
         [PutPartner.pending]:(state , action) =>{
-            state.putPartner.loading = true
+            state.putPartner.Loading = true
         },
         [PutPartner.fulfilled]:(state , action) =>{
             state.putPartner.Error = false
@@ -117,7 +117,7 @@ const PartnerSlice = createSlice({
             state.putPartner.Loading = false
         },
         [UploadImage.pending]:(state , action) =>{
-            state.uploadPartner.loading = true
+            state.uploadPartner.Loading = true
         },
         [UploadImage.fulfilled]:(state , action) =>{
             state.uploadPartner.Error = false

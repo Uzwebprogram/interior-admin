@@ -14,7 +14,6 @@ export const Wrapper = styled.div`
         border-radius: 10px;
         color: white;
         cursor: pointer;
-        margin-top: 40px;
     }
     .Buttons{
         display: flex;
