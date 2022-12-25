@@ -12,17 +12,17 @@ import CalculateSlice from './calculate/index'
 import SingleSlice from './before_after/index'
 
 export const store = configureStore({
-    reducer:{
-        admin : authSlice,
-        adminadd : AdminSlice,
-        youtube : YoutubeSlice,
-        client_comment : ClientSlice,
-        team : TeamSlice,
-
-        vacancy: VacancySlice,
-        partner: PartnerSlice
-
-        projects : ProjectsSlice
-
-    }
-})
+  reducer: {
+    admin: authSlice,
+    adminadd: AdminSlice,
+    youtube: YoutubeSlice,
+    client_comment: ClientSlice,
+    team: TeamSlice,
+    vacancy: VacancySlice,
+    partner: PartnerSlice,
+    projects: ProjectsSlice,
+    contact: ContactSlice,
+    calculate: CalculateSlice,
+    single: SingleSlice,
+  },
+});
