@@ -21,6 +21,17 @@ export const UploadImage = createAsyncThunk("Single/upload" , async (e) =>{
                return error
             }
  })
+ export const UploadImage2 = createAsyncThunk("Single/upload2" , async (e) =>{
+    const formData = new FormData()
+    formData.append("file" , e.target.files[0])
+    formData.append("upload_preset" , "jlgbmu1o")
+        try{
+        return await axios.post("https://api.cloudinary.com/v1_1/dnr6dsn29/upload" , formData)
+        .then(response => response?.data.secure_url)
+        }catch(error){
+           return error
+        }
+})
 export const DeleteSingle = createAsyncThunk('Single/delete' , async(id)=> {
     return await axios.delete(`${API_URL}/single/${id}`)
     .then(response => response.data)
@@ -55,6 +66,12 @@ const SingleSlice = createSlice({
             Success : false,
         },
         uploadSingle: {
+            Error : false,
+            Loading : false,
+            Success : false,
+            data : [],
+        },
+        uploadSingle2: {
             Error : false,
             Loading : false,
             Success : false,
@@ -130,6 +147,21 @@ const SingleSlice = createSlice({
             state.uploadSingle.Error = true
             state.uploadSingle.Success = false
             state.uploadSingle.Loading = false
+        },
+        [UploadImage2.pending]:(state , action) =>{
+            state.uploadSingle2.Loading = true
+        },
+        [UploadImage2.fulfilled]:(state , action) =>{
+            state.uploadSingle2.Error = false
+            state.uploadSingle2.Success = true
+            state.uploadSingle2.Loading = false
+            state.uploadSingle2.data = action.payload  
+            // console.log( );
+        },
+        [UploadImage2.rejected]:(state , action) =>{
+            state.uploadSingle2.Error = true
+            state.uploadSingle2.Success = false
+            state.uploadSingle2.Loading = false
         }
     }
 })

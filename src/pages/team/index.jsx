@@ -15,7 +15,7 @@ function Team() {
   const handleOpen = () => setOpen(true)
   return (
     <WrapperContainer>
-      <HeaderTopCommon title={"Отзывы клиентов"} onClick={handleOpen} textBtn={"Отзывы клиентов добавить"}/>
+      <HeaderTopCommon title={"Наша команда"} onClick={handleOpen} textBtn={"Наша команда добавить"}/>
       <TeamComponent handleClose={handleClose} open={open}/>
     </WrapperContainer>
   )

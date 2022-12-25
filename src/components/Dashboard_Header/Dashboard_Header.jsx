@@ -95,14 +95,6 @@ function Header({hover1}) {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/portfolioyoutube'}>
-                        <span class="icon">
-                        <ion-icon name="caret-forward-circle-outline"></ion-icon>
-                        </span>
-                        <span class="title">Блог</span>
-                    </NavLink>
-                </li>
-                <li>
                     <NavLink to={'/partners'}>
                         <span class="icon">
                         <ion-icon name="caret-forward-circle-outline"></ion-icon>

@@ -10,7 +10,7 @@ import ProjectsSlice from "./projects/index";
 import ContactSlice from './contact/index'
 import CalculateSlice from './calculate/index'
 import SingleSlice from './before_after/index'
-
+import ProductsSlice from "./products/index"
 export const store = configureStore({
   reducer: {
     admin: authSlice,
@@ -24,5 +24,6 @@ export const store = configureStore({
     contact: ContactSlice,
     calculate: CalculateSlice,
     single: SingleSlice,
+    product : ProductsSlice
   },
 });

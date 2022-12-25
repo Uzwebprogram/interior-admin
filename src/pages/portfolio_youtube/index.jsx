@@ -16,7 +16,7 @@ function PortfolioYoutube() {
   const handleOpen = () => setOpen(true)
   return (
     <WrapperContainer>
-      <HeaderTopCommon title={"Наше работь"} onClick={handleOpen} textBtn={"Наше работь добавить"}/>
+      <HeaderTopCommon title={"You tube информация"} onClick={handleOpen} textBtn={"You tube информация добавить"}/>
       <YoutubeComponent handleClose={handleClose} open={open}/>
     </WrapperContainer>
   )
