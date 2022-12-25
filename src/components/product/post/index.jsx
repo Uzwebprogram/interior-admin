@@ -29,14 +29,15 @@ function AdminAddForm({ Open, HandleClose }) {
   const dataProduct2 = useSelector((state) => state.product.uploadProducts2);
   const dataProduct3 = useSelector((state) => state.product.uploadProducts3);
   const dataProduct4 = useSelector((state) => state.product.uploadProducts4);
-
-  console.log(dataProduct);
-
-  const [roww, setRoww]= useState()
-  const [coll, setColl]= useState()
-
+  const [roww, setRoww]= useState("")
+  const [interior, setInterior]= useState("")
+  const [coll, setColl]= useState("")
+  console.log(roww , coll);
   const HandleRow = (e) => {
     setRoww(e.target.value)
+  }
+  const HandleInterior = (e) => {
+    setInterior(e.target.value)
   }
   const HandleCol = (e) => {
     setColl(e.target.value)
@@ -58,6 +59,7 @@ function AdminAddForm({ Open, HandleClose }) {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const product_img1 = dataProduct.data;
+    const category_id = interior
     const product_img2 = dataProduct2.data;
     const product_img3 = dataProduct3.data;
     const product_img4 = dataProduct4.data;
@@ -76,6 +78,7 @@ function AdminAddForm({ Open, HandleClose }) {
    
     await dispatch(
       PostProducts({
+        category_id,
         product_img1,
         product_img2,
         product_img3,
@@ -135,8 +138,8 @@ function AdminAddForm({ Open, HandleClose }) {
             <span className="loading">loading...</span>
           ) : (
             <>
-              <input type="file" id="file2" onChange={HandleChange3} />
-              <label for="file2" class="custom-file-upload">
+              <input type="file" id="file3" onChange={HandleChange3} />
+              <label for="file3" class="custom-file-upload">
                 <span className="span-download">
                   <ion-icon name="cloud-download-outline"></ion-icon>
                 </span>
@@ -149,8 +152,8 @@ function AdminAddForm({ Open, HandleClose }) {
             <span className="loading">loading...</span>
           ) : (
             <>
-              <input type="file" id="file2" onChange={HandleChange4} />
-              <label for="file2" class="custom-file-upload">
+              <input type="file" id="file4" onChange={HandleChange4} />
+              <label for="file4" class="custom-file-upload">
                 <span className="span-download">
                   <ion-icon name="cloud-download-outline"></ion-icon>
                 </span>
@@ -159,7 +162,7 @@ function AdminAddForm({ Open, HandleClose }) {
             </>
           )}
           <br />
-          <select>
+          <select onChange={HandleInterior}>
             <option value="default" selected disabled>Выбор типа</option>
             <option value="1">коммерческие</option>
             <option value="2">жилые</option>
