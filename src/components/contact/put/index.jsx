@@ -46,7 +46,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
                       </label>
                     </>
                   )}
-                  <button type="submit" value={elem.partners_id}>
+                  <button type="submit" value={elem.tube_id}>
                     изменить
                   </button>
                 </>

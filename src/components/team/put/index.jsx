@@ -38,8 +38,8 @@ function Put({openPut , handleClosePut , HandlePut }) {
                     <span className="span-download"><ion-icon  name="cloud-download-outline"></ion-icon></span>
                 загрузить изображение
                 </label>
-                <input type="text" placeholder={elem.team_name} required ref={team_nameUsref} />
-                <input type="text" placeholder={elem.team_position} required ref={team_positionUsref} />
+                <input type="text" placeholder={elem.team_name}  ref={team_nameUsref} />
+                <input type="text" placeholder={elem.team_position}  ref={team_positionUsref} />
                 <button type="submit" value={elem.tube_id}>изменить</button>
                 </>
           :null)}

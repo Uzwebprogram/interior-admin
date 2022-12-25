@@ -42,37 +42,31 @@ function Put({ openPut, handleClosePut, HandlePut }) {
                   <input
                     type="text"
                     placeholder={elem.vakancy_title_uz}
-                    required
                     ref={vakancyTitleUzUsref}
                   />
                    <input
                     type="text"
                     placeholder={elem.vakancy_title_ru}
-                    required
                     ref={vakancyTitleRuUsref}
                   />
                    <input
                     type="text"
                     placeholder={elem.vakancy_title_en}
-                    required
                     ref={vakancyTitleEnUsref}
                   />
                   <input
                     type="text"
                     placeholder={elem.vakancy_description_uz}
-                    required
                     ref={vakancyDescriptionUzUsref}
                   />
                   <input
                     type="text"
                     placeholder={elem.vakancy_description_ru}
-                    required
                     ref={vakancyDescriptionRuUsref}
                   />
                   <input
                     type="text"
                     placeholder={elem.vakancy_description_en}
-                    required
                     ref={vakancyDescriptionEnUsref}
                   />
                   <button type="submit" value={elem.vakancy_id}>
