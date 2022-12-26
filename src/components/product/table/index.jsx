@@ -22,7 +22,6 @@ const onChange = (key) => {
 
 export default function TableAdd({ onClickDelete, onClickPut }) {
   const getProducts = useSelector((state) => state.product.getProducts?.Data);
-
   //  ant tab function
   function srcset(image, size, rows = 1, cols = 1) {
     return {
@@ -34,7 +33,6 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
   }
   //  ant tab function
 
-  console.log(getProducts);
   const HeaderRows = [
     {
       id: 1,
