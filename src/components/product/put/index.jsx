@@ -1,9 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CommonBtn from "../../common/CommonBtn";
 import {
+  GetProduct,
   GetProducts,
   PostProducts,
+  PutProducts,
   UploadImage,
   UploadImage2,
   UploadImage3,
@@ -76,7 +78,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
       cols: coll,
       rows: roww,
     };
-    await dispatch(PostProducts({ body, id: HandlePut }));
+    await dispatch(PutProducts({ body , id:HandlePut }));
     dispatch(GetProducts());
     handleClosePut();
   };
@@ -86,7 +88,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
         <Wrapper>
           <h3>изменить</h3>
           <form onSubmit={HandleSubmit}>
-            {data.getProducts?.Data.map((elem) =>
+            {data.getProduct.Data.map((elem) =>
               elem.product_id == HandlePut ? (
                 <>
                   {dataProduct.Loading == true ? (
@@ -194,61 +196,51 @@ function Put({ openPut, handleClosePut, HandlePut }) {
                   <input
                     type="text"
                     placeholder={elem.product_title_uz}
-                    required
                     ref={product_titleUz}
                   />
                   <input
                     type="text"
                     placeholder={elem.product_title_ru}
-                    required
                     ref={product_titleRu}
                   />
                   <input
                     type="text"
                     placeholder={elem.product_title_en}
-                    required
                     ref={product_titleEn}
                   />
                   <input
                     type="text"
                     placeholder={elem.product_description_uz}
-                    required
                     ref={product_descriptionUz}
                   />
                   <input
                     type="text"
                     placeholder={elem.product_description_ru}
-                    required
                     ref={product_descriptionRu}
                   />
                   <input
                     type="text"
-                    placeholder="описание ен"
-                    required
+                    placeholder={elem.product_description_en}
                     ref={product_descriptionEn}
                   />
                   <input
                     type="text"
-                    placeholder="описание ен"
-                    required
+                    placeholder={elem.location}
                     ref={locationRef}
                   />
                   <input
                     type="text"
-                    placeholder="описание ен"
-                    required
+                    placeholder={elem.metr}
                     ref={metrRef}
                   />
                   <input
                     type="text"
-                    placeholder="описание ен"
-                    required
+                    placeholder={elem.still}
                     ref={stillRef}
                   />
                   <input
                     type="text"
-                    placeholder="описание ен"
-                    required
+                    placeholder={elem.design}
                     ref={designRef}
                   />
                   <CommonBtn type={"submit"} value={elem.product_id} style={{ marginTop: "20px" }}>
