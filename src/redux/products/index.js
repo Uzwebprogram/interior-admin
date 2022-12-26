@@ -7,6 +7,11 @@ export const GetProducts = createAsyncThunk("Products/get", async () => {
     .get(`${API_URL}/categories`)
     .then((response) => response.data);
 });
+export const GetProduct = createAsyncThunk("Product/get", async () => {
+  return await axios
+    .get(`${API_URL}/products`)
+    .then((response) => response.data);
+});
 export const PostProducts = createAsyncThunk("Products/post", async (body) => {
   return await axios.post(`${API_URL}/products`, body).then((res) =>{
     console.log(res);
@@ -72,7 +77,6 @@ export const DeleteProducts = createAsyncThunk(
 export const PutProducts = createAsyncThunk(
   "Products/put",
   async ({ body, id }) => {
-    console.log(id, body);
     return await axios
       .put(`${API_URL}/products/${id}`, body)
       .then((response) => console.log(response.data));
@@ -82,6 +86,12 @@ const ProductsSlice = createSlice({
   name: "Products",
   initialState: {
     getProducts: {
+      Error: false,
+      Loading: false,
+      Success: false,
+      Data: [],
+    },
+    getProduct: {
       Error: false,
       Loading: false,
       Success: false,
@@ -142,6 +152,21 @@ const ProductsSlice = createSlice({
       state.getProducts.Success = false;
       state.getProducts.Loading = false;
       state.getProducts.Data = [];
+    },
+    [GetProduct.pending]: (state, action) => {
+      state.getProduct.Loading = true;
+    },
+    [GetProduct.fulfilled]: (state, action) => {
+      state.getProduct.Error = false;
+      state.getProduct.Success = true;
+      state.getProduct.Loading = false;
+      state.getProduct.Data = action.payload;
+    },
+    [GetProduct.rejected]: (state, action) => {
+      state.getProduct.Error = true;
+      state.getProduct.Success = false;
+      state.getProduct.Loading = false;
+      state.getProduct.Data = [];
     },
     [PostProducts.pending]: (state, action) => {
       state.postProducts.Loading = true;
