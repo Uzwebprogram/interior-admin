@@ -60,6 +60,7 @@ const YoutubeSlice = createSlice({
             state.getYoutube.Loading = false
             state.getYoutube.Data = []
         },
+        
         [PostYoutube.pending]:(state , action) =>{
             state.postYoutube.loading = true
         },
