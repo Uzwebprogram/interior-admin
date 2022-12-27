@@ -9,7 +9,6 @@ const LoginComponent = () => {
   const dispatch = useDispatch();
   const passwordUsref = useRef();
   const admin = useSelector(state => state)
-  console.log(admin);
   const navigate = useNavigate();
   const HandleSubmit = (e) => {
     e.preventDefault();

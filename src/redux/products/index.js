@@ -14,7 +14,6 @@ export const GetProduct = createAsyncThunk("Product/get", async () => {
 });
 export const PostProducts = createAsyncThunk("Products/post", async (body) => {
   return await axios.post(`${API_URL}/products`, body).then((res) =>{
-    console.log(res);
     return res
   } );
 });

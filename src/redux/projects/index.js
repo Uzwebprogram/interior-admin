@@ -26,7 +26,6 @@ export const DeleteProjects = createAsyncThunk('Projects/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutProjects = createAsyncThunk('Projects/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/projects/${id}`, body)
     .then(response => console.log(response.data))
 }) 

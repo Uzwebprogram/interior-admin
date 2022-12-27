@@ -37,7 +37,6 @@ export const DeleteSingle = createAsyncThunk('Single/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutSingle = createAsyncThunk('Single/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/single/${id}`, body)
     .then(response => console.log(response.data))
 }) 

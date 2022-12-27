@@ -5,10 +5,8 @@ import ModalCommon from "../../common/Modal/Modal";
 import { Wrapper } from "./styled-index";
 
 function Put({ openPut, handleClosePut, HandlePut }) {
-    console.log(HandlePut);
   const dispatch = useDispatch();
   const data = useSelector((state) => state.vacancy);
-  console.log(data);
   const vakancyTitleUzUsref = useRef();
   const vakancyTitleRuUsref = useRef();
   const vakancyTitleEnUsref = useRef();

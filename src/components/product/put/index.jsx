@@ -31,10 +31,9 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const dataProduct2 = useSelector((state) => state.product.uploadProducts2);
   const dataProduct3 = useSelector((state) => state.product.uploadProducts3);
   const dataProduct4 = useSelector((state) => state.product.uploadProducts4);
-  const [roww, setRoww] = useState("");
-  const [interior, setInterior] = useState("");
-  const [coll, setColl] = useState("");
-
+  const [roww, setRoww] = useState(null);
+  const [interior, setInterior] = useState(null);
+  const [coll, setColl] = useState(null);
   const HandleRow = (e) => {
     setRoww(e.target.value);
   };

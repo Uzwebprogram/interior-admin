@@ -13,10 +13,8 @@ function YoutubeComponent({open , handleClose}) {
   const handleCloseDelete = () => setOpenDelete(false)
   const handleDeleteModal = (e) => {
    setAdminId(e.target.id)
-   console.log(e.target.id);
    setOpenDelete(true)
   }
-  console.log(adminId);
   const [openPut , setOpenPut] = useState(false);
   const handleClosePut = () => setOpenPut(false)
   const handlePutModal = (e) => {

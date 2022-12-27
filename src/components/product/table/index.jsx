@@ -17,7 +17,6 @@ import ImageListItem from "@mui/material/ImageListItem";
 import { Tabs } from "antd";
 
 const onChange = (key) => {
-  console.log(key);
 };
 
 export default function TableAdd({ onClickDelete, onClickPut }) {

@@ -26,7 +26,6 @@ export const DeleteTeam = createAsyncThunk('Team/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutTeam = createAsyncThunk('Team/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/teams/${id}`, body)
     .then(response => console.log(response.data))
 }) 
