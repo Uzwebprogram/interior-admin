@@ -2,8 +2,6 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 
-
-
 function ModalCommon({ open, handleClose, children , width }){
   const style = {
     position: "absolute",

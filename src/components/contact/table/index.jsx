@@ -13,6 +13,17 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
   const ContactGetState = useSelector(
     (state) => state.contact.getContact?.Data
   );
+  const DateFormat = (date) => {
+    var d = new Date(date),
+      month = "" + (d.getMonth() + 1),
+      day = "" + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [day, month, year].join(".");
+  };
   const HeaderRows = [
     {
       id: 1,
@@ -55,7 +66,7 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
                 {row.phone_number}
               </TableCell>
               <TableCell component="th" scope="row">
-                {row.date}
+              {DateFormat(row.date)}
               </TableCell>
               {/* <TableCell align="right">
                 <button
