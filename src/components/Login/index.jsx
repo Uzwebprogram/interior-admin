@@ -4,20 +4,22 @@ import { useDispatch } from "react-redux";
 import { adminAuth } from "../../redux/login/authSlice";
 import { useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom"
+import { GetProjects } from "../../redux/projects";
 const LoginComponent = () => {
   const EmailUserf = useRef();
   const dispatch = useDispatch();
   const passwordUsref = useRef();
   const admin = useSelector(state => state)
   const navigate = useNavigate();
-  const HandleSubmit = (e) => {
+  const HandleSubmit = async (e) => {
     e.preventDefault();
     const email = EmailUserf.current.value 
     const password = passwordUsref.current.value
-    dispatch(adminAuth({email,password}))
+    await dispatch(adminAuth({email,password}))
+    dispatch(GetProjects())
   }
   if (admin.admin?.Success == true) {
-    navigate('/dashboard')
+    navigate('/projects')
     window.location.reload()
   }
   return (

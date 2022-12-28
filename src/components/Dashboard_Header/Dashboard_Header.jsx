@@ -22,14 +22,6 @@ function Header({hover1}) {
                     </a>
                 </li>
                 <li>
-                    <NavLink to={'/dashboard'}>
-                        <span class="icon">
-                        <ion-icon name="aperture-outline"></ion-icon>
-                        </span>
-                        <span class="title">Статистика</span>
-                    </NavLink>
-                </li>
-                <li>
                     <NavLink to={'/projects'}>
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
