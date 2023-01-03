@@ -68,13 +68,13 @@ const SingleSlice = createSlice({
             Error : false,
             Loading : false,
             Success : false,
-            data : [],
+            data : "",
         },
         uploadSingle2: {
             Error : false,
             Loading : false,
             Success : false,
-            data : [],
+            data : "",
         },
     },
     extraReducers :{
@@ -140,7 +140,6 @@ const SingleSlice = createSlice({
             state.uploadSingle.Success = true
             state.uploadSingle.Loading = false
             state.uploadSingle.data = action.payload  
-            // console.log( );
         },
         [UploadImage.rejected]:(state , action) =>{
             state.uploadSingle.Error = true
@@ -155,7 +154,6 @@ const SingleSlice = createSlice({
             state.uploadSingle2.Success = true
             state.uploadSingle2.Loading = false
             state.uploadSingle2.data = action.payload  
-            // console.log( );
         },
         [UploadImage2.rejected]:(state , action) =>{
             state.uploadSingle2.Error = true

@@ -57,7 +57,7 @@ const TeamSlice = createSlice({
             Error : false,
             Loading : false,
             Success : false,
-            data : [],
+            data : "",
         },
     },
     extraReducers :{
@@ -123,7 +123,6 @@ const TeamSlice = createSlice({
             state.uploadTeam.Success = true
             state.uploadTeam.Loading = false
             state.uploadTeam.data = action.payload  
-            // console.log( );
         },
         [UploadImage.rejected]:(state , action) =>{
             state.uploadTeam.Error = true

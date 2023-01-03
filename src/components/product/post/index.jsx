@@ -96,6 +96,7 @@ function AdminAddForm({ Open, HandleClose }) {
       })
     );
     dispatch(GetProducts());
+    window.location.reload();
     HandleClose();
   };
 

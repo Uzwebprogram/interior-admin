@@ -44,6 +44,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
     setColl(e.target.value);
   };
 
+
   const HandleChange = async (e) => {
     await dispatch(UploadImage(e));
   };
@@ -59,7 +60,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const body = {
-      product_img1: dataProduct.data,
+      product_img1:  dataProduct.data,
       category_id: interior,
       product_img2: dataProduct2.data,
       product_img3: dataProduct3.data,

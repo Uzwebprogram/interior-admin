@@ -57,7 +57,7 @@ const PartnerSlice = createSlice({
             Error : false,
             Loading : false,
             Success : false,
-            data : [],
+            data : "",
         },
     },
     extraReducers :{

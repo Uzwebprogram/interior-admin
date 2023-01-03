@@ -16,6 +16,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const single_titleEn = useRef();
   const single_descriptionUz = useRef();
   const single_descriptionRu = useRef();
+
   const single_descriptionEn = useRef();
   const data = useSelector((state) => state.single);
   const dataSingle = useSelector((state) => state.single.uploadSingle);
@@ -26,6 +27,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const HandleChange2 = async (e) => {
     await dispatch(UploadImage2(e));
   };
+  console.log(dataSingle2.data);
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const body = {
@@ -38,6 +40,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
       single_description_ru: single_descriptionRu.current.value,
       single_description_en: single_descriptionEn.current.value,
     };
+    console.log(body);
     await dispatch(PutSingle({ body, id: HandlePut }));
     dispatch(GetSingle());
     handleClosePut();
