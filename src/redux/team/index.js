@@ -26,7 +26,6 @@ export const DeleteTeam = createAsyncThunk('Team/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutTeam = createAsyncThunk('Team/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/teams/${id}`, body)
     .then(response => console.log(response.data))
 }) 
@@ -58,7 +57,7 @@ const TeamSlice = createSlice({
             Error : false,
             Loading : false,
             Success : false,
-            data : [],
+            data : "",
         },
     },
     extraReducers :{
@@ -124,7 +123,6 @@ const TeamSlice = createSlice({
             state.uploadTeam.Success = true
             state.uploadTeam.Loading = false
             state.uploadTeam.data = action.payload  
-            // console.log( );
         },
         [UploadImage.rejected]:(state , action) =>{
             state.uploadTeam.Error = true

@@ -23,6 +23,7 @@ function AdminAddForm({ Open, HandleClose }) {
   const product_descriptionUz = useRef();
   const product_descriptionRu = useRef();
   const product_descriptionEn = useRef();
+  const data_ref = useRef();
   const dataProduct = useSelector((state) => state.product.uploadProducts);
   const dataProduct2 = useSelector((state) => state.product.uploadProducts2);
   const dataProduct3 = useSelector((state) => state.product.uploadProducts3);
@@ -73,29 +74,31 @@ function AdminAddForm({ Open, HandleClose }) {
     const design = designRef.current.value;
     const cols = coll;
     const rows = roww;
-   
+    const data_date = data_ref.current.value
     await dispatch(
       PostProducts({
-        category_id,
-        product_img1,
-        product_img2,
-        product_img3,
-        product_img4,
-        product_title_uz,
-        product_title_ru,
-        product_title_en,
-        product_description_uz,
-        product_description_ru,
-        product_description_en,
-        location,
-        metr,
-        still,
-        design,
-        cols,
-        rows
+       category_id,
+       product_img1,
+       product_img2,
+       product_img3,
+       product_img4,
+       product_title_uz,
+       product_title_en,
+       product_title_ru,
+       product_description_uz,
+       product_description_en,
+       product_description_ru,
+       location,
+       metr,
+       still,
+       design,
+       rows,
+       cols,
+       data_date
       })
     );
     dispatch(GetProducts());
+    window.location.reload();
     HandleClose();
   };
 
@@ -259,6 +262,12 @@ function AdminAddForm({ Open, HandleClose }) {
             placeholder="дизайн"
             required
             ref={designRef}
+          />
+                     <input
+            type="text"
+            placeholder="год"
+            required
+            ref={data_ref}
           />
           <CommonBtn type={"submit"} style={{ marginTop: "20px" }}>
             Добавить

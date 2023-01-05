@@ -19,8 +19,6 @@ function AdminAddForm({ Open, HandleClose }) {
   const single_descriptionEn = useRef();
   const dataSingle = useSelector((state) => state.single.uploadSingle);
   const dataSingle2 = useSelector((state) => state.single.uploadSingle2);
-  console.log(dataSingle);
-  console.log(dataSingle2);
   const HandleChange = async (e) => {
     await dispatch(UploadImage(e));
   };

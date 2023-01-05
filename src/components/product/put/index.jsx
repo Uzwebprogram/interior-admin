@@ -27,14 +27,14 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const product_descriptionUz = useRef();
   const product_descriptionRu = useRef();
   const product_descriptionEn = useRef();
+  const data_ref = useRef();
   const dataProduct = useSelector((state) => state.product.uploadProducts);
   const dataProduct2 = useSelector((state) => state.product.uploadProducts2);
   const dataProduct3 = useSelector((state) => state.product.uploadProducts3);
   const dataProduct4 = useSelector((state) => state.product.uploadProducts4);
-  const [roww, setRoww] = useState("");
-  const [interior, setInterior] = useState("");
-  const [coll, setColl] = useState("");
-
+  const [roww, setRoww] = useState(null);
+  const [interior, setInterior] = useState(null);
+  const [coll, setColl] = useState(null);
   const HandleRow = (e) => {
     setRoww(e.target.value);
   };
@@ -44,6 +44,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const HandleCol = (e) => {
     setColl(e.target.value);
   };
+
 
   const HandleChange = async (e) => {
     await dispatch(UploadImage(e));
@@ -60,7 +61,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const body = {
-      product_img1: dataProduct.data,
+      product_img1:  dataProduct.data,
       category_id: interior,
       product_img2: dataProduct2.data,
       product_img3: dataProduct3.data,
@@ -77,9 +78,11 @@ function Put({ openPut, handleClosePut, HandlePut }) {
       design: designRef.current.value,
       cols: coll,
       rows: roww,
+      data_date : data_ref.current.value
     };
     await dispatch(PutProducts({ body , id:HandlePut }));
     dispatch(GetProducts());
+    window.location.reload();
     handleClosePut();
   };
   return (
@@ -242,6 +245,11 @@ function Put({ openPut, handleClosePut, HandlePut }) {
                     type="text"
                     placeholder={elem.design}
                     ref={designRef}
+                  />
+                                    <input
+                    type="text"
+                    placeholder={elem.data_date}
+                    ref={data_ref}
                   />
                   <CommonBtn type={"submit"} value={elem.product_id} style={{ marginTop: "20px" }}>
                     изменить

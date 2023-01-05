@@ -15,7 +15,6 @@ export const DeleteClient = createAsyncThunk('Client/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutClient = createAsyncThunk('Client/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/client/${id}`, body)
     .then(response => console.log(response.data))
 }) 

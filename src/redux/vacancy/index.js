@@ -16,7 +16,6 @@ export const DeleteVacancy = createAsyncThunk('Vacancy/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutVacancy = createAsyncThunk('Vacancy/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/vakancy/${id}`, body)
     .then(response => console.log(response.data))
 }) 

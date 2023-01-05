@@ -26,7 +26,6 @@ export const DeletePartner = createAsyncThunk('Partner/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutPartner = createAsyncThunk('Partner/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/partners/${id}`, body)
     .then(response => console.log(response.data))
 }) 
@@ -58,7 +57,7 @@ const PartnerSlice = createSlice({
             Error : false,
             Loading : false,
             Success : false,
-            data : [],
+            data : "",
         },
     },
     extraReducers :{

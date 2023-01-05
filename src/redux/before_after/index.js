@@ -37,7 +37,6 @@ export const DeleteSingle = createAsyncThunk('Single/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutSingle = createAsyncThunk('Single/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/single/${id}`, body)
     .then(response => console.log(response.data))
 }) 
@@ -69,13 +68,13 @@ const SingleSlice = createSlice({
             Error : false,
             Loading : false,
             Success : false,
-            data : [],
+            data : "",
         },
         uploadSingle2: {
             Error : false,
             Loading : false,
             Success : false,
-            data : [],
+            data : "",
         },
     },
     extraReducers :{
@@ -141,7 +140,6 @@ const SingleSlice = createSlice({
             state.uploadSingle.Success = true
             state.uploadSingle.Loading = false
             state.uploadSingle.data = action.payload  
-            // console.log( );
         },
         [UploadImage.rejected]:(state , action) =>{
             state.uploadSingle.Error = true
@@ -156,7 +154,6 @@ const SingleSlice = createSlice({
             state.uploadSingle2.Success = true
             state.uploadSingle2.Loading = false
             state.uploadSingle2.data = action.payload  
-            // console.log( );
         },
         [UploadImage2.rejected]:(state , action) =>{
             state.uploadSingle2.Error = true

@@ -14,7 +14,6 @@ export const GetProduct = createAsyncThunk("Product/get", async () => {
 });
 export const PostProducts = createAsyncThunk("Products/post", async (body) => {
   return await axios.post(`${API_URL}/products`, body).then((res) =>{
-    console.log(res);
     return res
   } );
 });
@@ -116,25 +115,25 @@ const ProductsSlice = createSlice({
       Error: false,
       Loading: false,
       Success: false,
-      data: [],
+      data: "",
     },
     uploadProducts2: {
       Error: false,
       Loading: false,
       Success: false,
-      data: [],
+      data: "",
     },
     uploadProducts3: {
       Error: false,
       Loading: false,
       Success: false,
-      data: [],
+      data: "",
     },
     uploadProducts4: {
       Error: false,
       Loading: false,
       Success: false,
-      data: [],
+      data: "",
     },
   },
   extraReducers: {

@@ -15,7 +15,6 @@ function ClientComponent({open , handleClose}) {
   const handleCloseDelete = () => setOpenDelete(false)
   const handleDeleteModal = (e) => {
    setAdminId(e.target.id)
-   console.log(e.target.id);
    setOpenDelete(true)
   }
   const [openPut , setOpenPut] = useState(false);

@@ -2,7 +2,6 @@ import { lazy } from "react";
 import Cookies from "universal-cookie";
 
 const Login = lazy(() => import("./../pages/login/index"))
-const Dashboard = lazy(() => import("./../pages/dashboard/index"))
 const AddAdmin = lazy(() => import("./../pages/add_admin/index"))
 const Team = lazy(() => import("./../pages/team/index"))
 const Contact = lazy(() => import("./../pages/contact/index"))
@@ -21,11 +20,6 @@ export const RouterData = [
         id : 1,
         path : "/",
         component :cookie.get("token") ? null : <Login/>
-    },
-    {
-        id : 2,
-        path : "/dashboard",
-        component : cookie.get("token") ? <Dashboard/> :null
     },
     {
         id : 3,

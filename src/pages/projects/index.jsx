@@ -17,7 +17,7 @@ function Projects() {
   const handleOpen = () => setOpen(true)
   return (
     <WrapperContainer>
-      <HeaderTopCommon title={"Наше работь"} onClick={handleOpen} textBtn={"Наше работь добавить"}/>
+      <HeaderTopCommon title={"Наши работы"} onClick={handleOpen} textBtn={"Наши работы добавить"}/>
       <ProjectsComponent handleClose={handleClose} open={open}/>
     </WrapperContainer>
   )

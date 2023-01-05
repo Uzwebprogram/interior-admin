@@ -15,7 +15,6 @@ export const DeleteYoutube = createAsyncThunk('youtube/delete' , async(id)=> {
     .then(response => response.data)
 }) 
 export const PutYoutube = createAsyncThunk('youtube/put' , async({body , id})=> {
-    console.log(id , body);
     return await axios.put(`${API_URL}/youtube/${id}`, body)
     .then(response => console.log(response.data))
 }) 

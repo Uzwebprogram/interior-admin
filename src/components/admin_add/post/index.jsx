@@ -10,7 +10,6 @@ function AdminAddForm({Open , HandleClose}) {
     const emailUseRef = useRef();
     const passwordUseRef = useRef();
     const addAdmin = useSelector(state => state.adminadd)
-    console.log();
     const nameUseRef = useRef();
     const HandleSubmit = (e) =>{
         e.preventDefault();
