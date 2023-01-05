@@ -73,15 +73,18 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
                   variant="quilted"
                   cols={4}
                   rowHeight={121}
+                  
                 >
                   {elem.products.map((item) => (
                     <ImageListItem
                       key={item.product_id}
                       cols={item.cols || 1}
-                      rows={item.rows || 2}
+                      rows={item.rows || 1}
+                      
                     >
                       
                         <img
+                        className="grid-img"
                           {...srcset(
                             item.product_img1,
                             121,
