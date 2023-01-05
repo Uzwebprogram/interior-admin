@@ -3,6 +3,12 @@ import styled from "styled-components";
 export const Section = styled.div`
   margin: 0 auto;
   width: 100%;
+  /* .grid-img{
+    object-fit: cover !important;
+    width: auto;
+    height: auto;
+    display: block !important;
+  } */
 
   .ant-tabs-tab-btn {
     color: #fff;
