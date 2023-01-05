@@ -13,11 +13,11 @@ function AdminAddForm({ Open, HandleClose }) {
   const dataPartner = useSelector((state) => state.partner.uploadPartner);
   const HandleChange = async (e) => {
     await dispatch(UploadImage(e));
-  };
+  };  
   const HandleSubmit = async (e) => {
     e.preventDefault();
     const partners_img = dataPartner.data;
-    await dispatch(PostPartner({ partners_img }));
+    await dispatch(PostPartner({ partners_img }));  
     dispatch(GetPartner());
     HandleClose();
   };
