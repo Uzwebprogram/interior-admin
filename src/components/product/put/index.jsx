@@ -162,38 +162,22 @@ function Put({ openPut, handleClosePut, HandlePut }) {
                   <br />
                   <select onChange={HandleRow}>
                     <option value="rows" selected disabled>
-                      Rows
+                    Height
                     </option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                    <option value="2">25%</option>
+                    <option value="3">50%</option>
+                    <option value="3">75%</option>
+                    <option value="6">100%</option>
                   </select>
                   <br />
                   <select onChange={HandleCol}>
                     <option value="rows" selected disabled>
-                      Cols
+                      Width
                     </option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                    <option value="2">25%</option>
+                    <option value="3">50%</option>
+                    <option value="3">75%</option>
+                    <option value="6">100%</option>
                   </select>
                   <br />
                   <input

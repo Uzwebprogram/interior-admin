@@ -16,8 +16,8 @@ export const UploadImage = createAsyncThunk("Projects/upload" , async (e) =>{
         formData.append("upload_preset" , "jlgbmu1o")
             try{
             return await axios.post("https://api.cloudinary.com/v1_1/dnr6dsn29/upload" , formData)
-            .then(response => response?.data.secure_url)
-            }catch(error){
+            .then(response => response?.data.secure_url)            
+        }catch(error){
                return error
             }
  })
