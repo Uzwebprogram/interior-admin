@@ -7,9 +7,7 @@ import {
   PostProducts,
   PutProducts,
   UploadImage,
-  UploadImage2,
-  UploadImage3,
-  UploadImage4,
+
 } from "../../../redux/products/index";
 import ModalCommon from "../../common/Modal/Modal";
 import { Wrapper } from "./styled-index";
@@ -29,9 +27,6 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const product_descriptionEn = useRef();
   const data_ref = useRef();
   const dataProduct = useSelector((state) => state.product.uploadProducts);
-  const dataProduct2 = useSelector((state) => state.product.uploadProducts2);
-  const dataProduct3 = useSelector((state) => state.product.uploadProducts3);
-  const dataProduct4 = useSelector((state) => state.product.uploadProducts4);
   const [roww, setRoww] = useState(null);
   const [interior, setInterior] = useState(null);
   const [coll, setColl] = useState(null);
@@ -49,23 +44,13 @@ function Put({ openPut, handleClosePut, HandlePut }) {
   const HandleChange = async (e) => {
     await dispatch(UploadImage(e));
   };
-  const HandleChange2 = async (e) => {
-    await dispatch(UploadImage2(e));
-  };
-  const HandleChange3 = async (e) => {
-    await dispatch(UploadImage3(e));
-  };
-  const HandleChange4 = async (e) => {
-    await dispatch(UploadImage4(e));
-  };
+
   const HandleSubmit = async (e) => {
     e.preventDefault();
+    console.log(product_descriptionEn.current.value);
     const body = {
       product_img1:  dataProduct.data,
       category_id: interior,
-      product_img2: dataProduct2.data,
-      product_img3: dataProduct3.data,
-      product_img4: dataProduct4.data,
       product_title_uz: product_titleUz.current.value,
       product_title_ru: product_titleRu.current.value,
       product_title_en: product_titleEn.current.value,
@@ -82,7 +67,7 @@ function Put({ openPut, handleClosePut, HandlePut }) {
     };
     await dispatch(PutProducts({ body , id:HandlePut }));
     dispatch(GetProducts());
-    window.location.reload();
+    // window.location.reload();
     handleClosePut();
   };
   return (
@@ -104,48 +89,6 @@ function Put({ openPut, handleClosePut, HandlePut }) {
                           <ion-icon name="cloud-download-outline"></ion-icon>
                         </span>
                         загрузить 1
-                      </label>
-                    </>
-                  )}
-                  <br />
-                  {dataProduct2.Loading == true ? (
-                    <span className="loading">loading...</span>
-                  ) : (
-                    <>
-                      <input type="file" id="file2" onChange={HandleChange2} />
-                      <label for="file2" class="custom-file-upload">
-                        <span className="span-download">
-                          <ion-icon name="cloud-download-outline"></ion-icon>
-                        </span>
-                        загрузить 2
-                      </label>
-                    </>
-                  )}
-                  <br />
-                  {dataProduct3.Loading == true ? (
-                    <span className="loading">loading...</span>
-                  ) : (
-                    <>
-                      <input type="file" id="file3" onChange={HandleChange3} />
-                      <label for="file3" class="custom-file-upload">
-                        <span className="span-download">
-                          <ion-icon name="cloud-download-outline"></ion-icon>
-                        </span>
-                        загрузить 3
-                      </label>
-                    </>
-                  )}
-                  <br />
-                  {dataProduct4.Loading == true ? (
-                    <span className="loading">loading...</span>
-                  ) : (
-                    <>
-                      <input type="file" id="file4" onChange={HandleChange4} />
-                      <label for="file4" class="custom-file-upload">
-                        <span className="span-download">
-                          <ion-icon name="cloud-download-outline"></ion-icon>
-                        </span>
-                        загрузить 4
                       </label>
                     </>
                   )}

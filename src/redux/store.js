@@ -11,6 +11,7 @@ import ContactSlice from './contact/index'
 import CalculateSlice from './calculate/index'
 import SingleSlice from './before_after/index'
 import ProductsSlice from "./products/index"
+import ImagesSlice from "./images_product/index"
 export const store = configureStore({
   reducer: {
     admin: authSlice,
@@ -24,6 +25,7 @@ export const store = configureStore({
     contact: ContactSlice,
     calculate: CalculateSlice,
     single: SingleSlice,
-    product : ProductsSlice
+    product : ProductsSlice,
+    images : ImagesSlice
   },
 });

@@ -29,42 +29,6 @@ export const UploadImage = createAsyncThunk("Products/upload", async (e) => {
     return error;
   }
 });
-export const UploadImage2 = createAsyncThunk("Products/upload2", async (e) => {
-  const formData = new FormData();
-  formData.append("file", e.target.files[0]);
-  formData.append("upload_preset", "jlgbmu1o");
-  try {
-    return await axios
-      .post("https://api.cloudinary.com/v1_1/dnr6dsn29/upload", formData)
-      .then((response) => response?.data.secure_url);
-  } catch (error) {
-    return error;
-  }
-});
-export const UploadImage3 = createAsyncThunk("Products/upload3", async (e) => {
-  const formData = new FormData();
-  formData.append("file", e.target.files[0]);
-  formData.append("upload_preset", "jlgbmu1o");
-  try {
-    return await axios
-      .post("https://api.cloudinary.com/v1_1/dnr6dsn29/upload", formData)
-      .then((response) => response?.data.secure_url);
-  } catch (error) {
-    return error;
-  }
-});
-export const UploadImage4 = createAsyncThunk("Products/upload4", async (e) => {
-  const formData = new FormData();
-  formData.append("file", e.target.files[0]);
-  formData.append("upload_preset", "jlgbmu1o");
-  try {
-    return await axios
-      .post("https://api.cloudinary.com/v1_1/dnr6dsn29/upload", formData)
-      .then((response) => response?.data.secure_url);
-  } catch (error) {
-    return error;
-  }
-});
 export const DeleteProducts = createAsyncThunk(
   "Products/delete",
   async (id) => {
@@ -117,24 +81,7 @@ const ProductsSlice = createSlice({
       Success: false,
       data: "",
     },
-    uploadProducts2: {
-      Error: false,
-      Loading: false,
-      Success: false,
-      data: "",
-    },
-    uploadProducts3: {
-      Error: false,
-      Loading: false,
-      Success: false,
-      data: "",
-    },
-    uploadProducts4: {
-      Error: false,
-      Loading: false,
-      Success: false,
-      data: "",
-    },
+
   },
   extraReducers: {
     [GetProducts.pending]: (state, action) => {
@@ -214,57 +161,11 @@ const ProductsSlice = createSlice({
       state.uploadProducts.Success = true;
       state.uploadProducts.Loading = false;
       state.uploadProducts.data = action.payload;
-      // console.log( );
     },
     [UploadImage.rejected]: (state, action) => {
       state.uploadProducts.Error = true;
       state.uploadProducts.Success = false;
       state.uploadProducts.Loading = false;
-    },
-    [UploadImage2.pending]: (state, action) => {
-      state.uploadProducts2.Loading = true;
-    },
-    [UploadImage2.fulfilled]: (state, action) => {
-      state.uploadProducts2.Error = false;
-      state.uploadProducts2.Success = true;
-      state.uploadProducts2.Loading = false;
-      state.uploadProducts2.data = action.payload;
-      // console.log( );
-    },
-    [UploadImage2.rejected]: (state, action) => {
-      state.uploadProducts2.Error = true;
-      state.uploadProducts2.Success = false;
-      state.uploadProducts2.Loading = false;
-    },
-    [UploadImage3.pending]: (state, action) => {
-      state.uploadProducts3.Loading = true;
-    },
-    [UploadImage3.fulfilled]: (state, action) => {
-      state.uploadProducts3.Error = false;
-      state.uploadProducts3.Success = true;
-      state.uploadProducts3.Loading = false;
-      state.uploadProducts3.data = action.payload;
-      // console.log( );
-    },
-    [UploadImage3.rejected]: (state, action) => {
-      state.uploadProducts3.Error = true;
-      state.uploadProducts3.Success = false;
-      state.uploadProducts3.Loading = false;
-    },
-    [UploadImage4.pending]: (state, action) => {
-      state.uploadProducts4.Loading = true;
-    },
-    [UploadImage4.fulfilled]: (state, action) => {
-      state.uploadProducts4.Error = false;
-      state.uploadProducts4.Success = true;
-      state.uploadProducts4.Loading = false;
-      state.uploadProducts4.data = action.payload;
-      // console.log( );
-    },
-    [UploadImage4.rejected]: (state, action) => {
-      state.uploadProducts4.Error = true;
-      state.uploadProducts4.Success = false;
-      state.uploadProducts4.Loading = false;
     },
   },
 });

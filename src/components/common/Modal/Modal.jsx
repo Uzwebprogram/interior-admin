@@ -4,7 +4,7 @@ import Modal from "@mui/material/Modal";
 
 
 
-function ModalCommon({ open, handleClose, children , width }){
+function ModalCommon({ open, handleClose, children , width , styles }){
   const style = {
     position: "absolute",
     top: "50%",
@@ -16,7 +16,7 @@ function ModalCommon({ open, handleClose, children , width }){
     boxShadow: "0px 0px 10px 10px #ff800b",
     borderRadius : "10px",
     overflowY: 'auto',
-    height: '350px',
+    height:'350px' ,
     p: 2,
   };
   return (
@@ -27,7 +27,7 @@ function ModalCommon({ open, handleClose, children , width }){
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>{children}</Box>
+        <Box sx={style} style={styles}>{children}</Box>
       </Modal>
     </>
   );

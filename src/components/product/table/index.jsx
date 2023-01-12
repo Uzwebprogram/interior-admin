@@ -19,7 +19,7 @@ import { Tabs } from "antd";
 const onChange = (key) => {
 };
 
-export default function TableAdd({ onClickDelete, onClickPut }) {
+export default function TableAdd({ onClickDelete, onClickPut , onClickImages , handleImagesDelete }) {
   const getProducts = useSelector((state) => state.product.getProducts?.Data);
   //  ant tab function
   function srcset(image, size, rows = 1, cols = 1) {
@@ -73,7 +73,6 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
                   variant="quilted"
                   cols={4}
                   rowHeight={121}
-                  
                 >
                   {elem.products.map((item) => (
                     <ImageListItem
@@ -94,7 +93,28 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
                           alt={item.product_title_ru}
                           loading="lazy"
                         />
+                        
                         <div className="crud-div">
+                        <button
+                            style={{
+                              border: "none",
+                              cursor: "pointer",
+                            }}
+                            id={item.product_id}
+                            onClick={onClickImages}
+                          >
+                            изображения добавить
+                          </button>
+                          <button
+                            style={{
+                              border: "none",
+                              cursor: "pointer",
+                            }}
+                            id={item.product_id}
+                            onClick={handleImagesDelete}
+                          >
+                            изображения удалить
+                          </button>
                           <button
                             style={{
                               border: "none",
@@ -136,79 +156,6 @@ export default function TableAdd({ onClickDelete, onClickPut }) {
           }))}
         />
       </Section>
-
-      {/* <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {HeaderRows.map((elem, index) => (
-              <>
-                <TableCell align={elem.algin} key={index}>
-                  {elem.title}
-                </TableCell>
-              </>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {SingleGetState.map((row) => (
-            <TableRow
-              key={row.single_id}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row">
-                <img src={row.single_img1} width={100} height={60} alt="" />
-              </TableCell>
-              <TableCell component="th" scope="row">
-                <img src={row.single_img2} width={100} height={60} alt="" />
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {row.single_title_ru}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {row.single_description_ru}
-              </TableCell>
-              <TableCell align="right">
-                <button
-                  style={{
-                    background: "white",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                  id={row.single_id}
-                  onClick={onClickPut}
-                >
-                  <img
-                    id={row.single_id}
-                    src={Put}
-                    width={25}
-                    height={25}
-                    alt=""
-                  />
-                </button>{" "}
-                <button
-                  style={{
-                    background: "white",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
-                  id={row.single_id}
-                  onClick={onClickDelete}
-                >
-                  <img
-                    id={row.single_id}
-                    src={Delete}
-                    width={25}
-                    height={25}
-                    alt=""
-                  />
-                </button>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>   */}
     </>
   );
 }
