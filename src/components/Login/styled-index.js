@@ -22,9 +22,9 @@ export const Wrapper = styled.div`
   width: 400px;
   padding: 40px;
   transform: translate(-50%, -50%);
-  background:black;
+  background:#2F66B8;
   box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(1,3,5,7);
+  box-shadow: 0 15px 25px #2F66B8;
   border-radius: 10px;
 }
 
@@ -161,7 +161,7 @@ export const Wrapper = styled.div`
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, #000);
+  background: linear-gradient(360deg, transparent, #2F66B8);
   animation: btn-anim4 1s linear infinite;
   animation-delay: .75s
 }

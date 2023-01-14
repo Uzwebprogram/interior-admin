@@ -11,7 +11,7 @@
 
 :root {
   --blue: #fff;
-  --white: #000;
+  --white: #fff;
   --gray: #f5f5f5;
   --black1: #fff;
   --black2: #999;
@@ -30,7 +30,7 @@ body {
     position: fixed;
     width: 300px;
     height: 100%;
-    background: #fff;
+    background: #2F66B8;
     transition: 0.5s;
     overflow-y: auto;
   }
@@ -45,8 +45,9 @@ body {
     width: 100%;
   }
   .navigation button{
-    background-color: black;
-    color: white;
+    background-color: #fff;
+    border: 1px solid #fff;
+    color: #2F66B8;
     width: 90%;
     display: flex;
     justify-content: center;
@@ -86,7 +87,7 @@ body {
   .navigation ul li:hover a,
   .navigation ul li.hovered a {
       transition: 0.7s;
-    color: var(--blue);
+    color: #2F66B8;
   }
   
   .navigation ul li a .icon {

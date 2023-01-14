@@ -22,7 +22,7 @@ function AdminAddForm({Open , HandleClose}) {
         window.location.reload();
     }
   return (
-    <ModalCommon open={Open} handleClose={HandleClose}>
+    <ModalCommon width={350} open={Open} handleClose={HandleClose}>
           <>
           <Wrapper onSubmit={HandleSubmit}>
               <h3>Админ добавить</h3>

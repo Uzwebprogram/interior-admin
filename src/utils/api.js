@@ -1,1 +1,1 @@
-export const API_URL = "https://api.luxhouse.uz";
+export const API_URL = "https://apifake.supersiteuz.com";

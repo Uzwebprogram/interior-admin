@@ -12,9 +12,12 @@ export const Wrapper = styled.form`
         padding: 15px;
         border-bottom: 2px solid white;
         color: white;
-        
         background-color: transparent;
         margin-top: 15px;
+        outline: none;
+        ::placeholder{
+            color: white;
+        }
     }
     
 `

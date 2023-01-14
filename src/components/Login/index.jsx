@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { adminAuth } from "../../redux/login/authSlice";
 import { useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom"
-import { GetProjects } from "../../redux/projects";
+import { adminGet } from "../../redux/admin_add";
 const LoginComponent = () => {
   const EmailUserf = useRef();
   const dispatch = useDispatch();
@@ -16,10 +16,10 @@ const LoginComponent = () => {
     const email = EmailUserf.current.value 
     const password = passwordUsref.current.value
     await dispatch(adminAuth({email,password}))
-    dispatch(GetProjects())
+    dispatch(adminGet())
   }
   if (admin.admin?.Success == true) {
-    navigate('/projects')
+    navigate('/adminadd')
     window.location.reload()
   }
   return (

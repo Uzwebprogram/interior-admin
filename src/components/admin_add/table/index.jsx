@@ -15,26 +15,26 @@ export default function TableAdd({ onClickDelete , onClickPut }) {
     const HeaderRows = [
         {
             id : 1, 
-            title : "Name"
+            title : "имя"
         },
         {
             id : 2, 
-            title : "Email"
+            title : "Ел.почта"
         },
         {
           id : 3, 
-          title : "Delete",
+          title : "Удалить",
           algin : "right"
         }
     ]
   return (
-    <TableContainer component={Paper}>
+    <TableContainer style={{backgroundColor:"#2F66B8"}} component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             {HeaderRows.map((elem , index) =>
                 <>
-            <TableCell align={elem.algin}  key={index}>{elem.title}</TableCell>
+            <TableCell style={{color:"white"}} align={elem.algin}  key={index}>{elem.title}</TableCell>
                 </>
             )}
           </TableRow>
@@ -45,13 +45,14 @@ export default function TableAdd({ onClickDelete , onClickPut }) {
               key={row.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
+              
+              <TableCell style={{color:"white"}} component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell component="th" scope="row">
+              <TableCell style={{color:"white"}} component="th" scope="row">
                 {row.email}
               </TableCell>
-              <TableCell align="right"><button style={{background : "white" , border : "none" , cursor :"pointer"}} id={row.id} onClick={onClickPut}><img id={row.id} src={Put} width={25} height={25} alt="" /></button> <button style={{background : "white" , border : "none" , cursor :"pointer"}} id={row.id}  onClick={onClickDelete}><img id={row.id} src={Delete} width={25} height={25} alt="" /></button></TableCell>
+              <TableCell align="right"><button style={{background : "transparent" , border : "none" , cursor :"pointer"}} id={row.id}  onClick={onClickDelete}><img id={row.id} src={Delete} width={25} height={25} alt="" /></button></TableCell>
               </TableRow>
           ))}
         </TableBody>

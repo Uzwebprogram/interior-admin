@@ -3,15 +3,15 @@ import axios from "axios";
 
 
 export const adminAdd = createAsyncThunk('admin/Add' , async(body) =>{
-     return await axios.post("https://x8ki-letl-twmt.n7.xano.io/api:14dxgn0g/auth/signup" , body)
+     return await axios.post("https://x8ki-letl-twmt.n7.xano.io/api:7hXIC0uY/auth/signup" , body)
     .then(res => res)
 })
 export const adminGet = createAsyncThunk("admin/Get" ,  () =>{
-    return axios.get("https://x8ki-letl-twmt.n7.xano.io/api:14dxgn0g/user")
+    return axios.get("https://x8ki-letl-twmt.n7.xano.io/api:7hXIC0uY/user")
     .then(response => response.data)
 })
 export const adminDelete = createAsyncThunk("admin/Delete", async (id)=>{
-    return await axios.delete(`https://x8ki-letl-twmt.n7.xano.io/api:14dxgn0g/user/${id}`)
+    return await axios.delete(`https://x8ki-letl-twmt.n7.xano.io/api:7hXIC0uY/user/${id}`)
     .then(res => res)
 })
 const AdminSlice = createSlice({
