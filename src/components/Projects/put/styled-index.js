@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
 label{
     border-style: dotted;
     text-align: center;
-    padding: 15px 45px 18px 45px;
+    padding: 15px 35px 18px 35px;
     cursor: pointer;
     width: 100%;
 }
