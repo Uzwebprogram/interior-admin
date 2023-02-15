@@ -11,7 +11,6 @@ import Delete from "./../../../assets/image/icons-delete.png"
 import { useSelector } from 'react-redux';
 export default function TableAdd({ onClickDelete , onClickPut }) {
   const ClientCommentGetState = useSelector(state => state.analitika.analitikaGet?.data)
-  console.log();
     const HeaderRows = [
         {
             id : 1, 
@@ -65,7 +64,7 @@ export default function TableAdd({ onClickDelete , onClickPut }) {
               <TableCell component="th" scope="row">
                 {row.data_date}
               </TableCell>
-              <TableCell align="right"><button style={{background : "white" , border : "none" , cursor :"pointer"}} id={row.client_id} onClick={onClickPut}><img id={row.team_id} src={Put} width={25} height={25} alt="" /></button> <button style={{background : "white" , border : "none" , cursor :"pointer"}} id={row.team_id}  onClick={onClickDelete}><img id={row.team_id} src={Delete} width={25} height={25} alt="" /></button></TableCell>
+              <TableCell align="right"><button style={{background : "white" , border : "none" , cursor :"pointer"}} id={row.id} onClick={onClickPut}><img id={row.id} src={Put} width={25} height={25} alt="" /></button> <button style={{background : "white" , border : "none" , cursor :"pointer"}} id={row.id}  onClick={onClickDelete}><img id={row.id} src={Delete} width={25} height={25} alt="" /></button></TableCell>
               </TableRow>
           ))}
         </TableBody>

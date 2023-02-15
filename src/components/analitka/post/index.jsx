@@ -7,6 +7,7 @@ import { Wrapper } from './styled-index';
 import { AnalitikaGet, AnalitikaPost, UploadImage } from '../../../redux/analitka';
 function AdminAddForm({Open , HandleClose}) {
     const dispatch = useDispatch();
+    const catogeroyNameRef = useRef();
     const titleUzRef = useRef();
     const titleEnRef = useRef();
     const titleRuRef = useRef();
@@ -16,35 +17,42 @@ function AdminAddForm({Open , HandleClose}) {
     const data_region = useRef();
     const dataClient = useSelector(state => state.analitika.uploadImages)
     const data = useSelector(state => state.analitika)
-    console.log(data.analitikaPost);
     const HandleChange =  async (e) => {
       await dispatch(UploadImage(e))
     }
     const HandleSubmit = async (e) =>{
         e.preventDefault();
-        const title_uz = titleUzRef.current.value
-        const title_en = titleEnRef.current.value
-        const title_ru = titleRuRef.current.value
-        const description_uz = DescriptionUzRef.current.value
-        const description_en = DescriptionEnRef.current.value
-        const description_ru = DescriptionRuRef.current.value
-        const data_date = data_region.current.value
-        const img = dataClient.data
-        await dispatch(AnalitikaPost({title_uz , title_en ,title_ru ,description_uz,description_en,description_ru,data_date, img}))
+        const body = {
+          title_uz : titleUzRef.current.value,
+          title_en : titleEnRef.current.value,
+          title_ru : titleRuRef.current.value,
+          description_uz : DescriptionUzRef.current.value,
+          description_en : DescriptionEnRef.current.value,
+          description_ru : DescriptionRuRef.current.value,
+          data_date : data_region.current.value,
+          img : dataClient.data,
+          category_name : catogeroyNameRef.current.value
+      };
+        await dispatch(AnalitikaPost(body))
         dispatch(AnalitikaGet())
         HandleClose()
       }
  
   return (
-    <ModalCommon width={400} open={Open} handleClose={HandleClose}>
+    <ModalCommon height={370} width={400} open={Open} handleClose={HandleClose}>
           <>
           <Wrapper onSubmit={HandleSubmit}>
               <h3>Аналитика добавить</h3>
+              {dataClient.Loading == true ? 
+                <span className="loading">loading...</span>
+              :<>
               <input type="file" id="file" onChange={HandleChange}/>
-                <label for="file" class="custom-file-upload">
-                    <span className="span-download"><ion-icon  name="cloud-download-outline"></ion-icon></span>
-                загрузить изображение
-                </label>
+              <label for="file" class="custom-file-upload">
+                  <span className="span-download"><ion-icon  name="cloud-download-outline"></ion-icon></span>
+              загрузить изображение
+              </label>
+              </>}
+                <input type="text" placeholder='отрасли имя' required ref={catogeroyNameRef} />
                 <input type="text" placeholder='уз названия' required ref={titleUzRef} />
                 <input type="text" placeholder='ру названия' required ref={titleRuRef} />
                 <input type="text" placeholder='ен названия' required ref={titleEnRef} />
